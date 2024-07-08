@@ -1,0 +1,43 @@
+\documentclass[a4paper]{report}
+\input{header.tex}
+\author{Leven Huang}
+\title{Algebra : Chapter 0}
+
+\thispagestyle{empty}
+\addbibresource{ref.bib}
+
+\usepackage{adjustbox}
+\usepackage{centernot}
+\usepackage{outlines}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	This is my notes on the book \citetitle{paoloaluffi_2009_algebra} by \citeauthor{paoloaluffi_2009_algebra}. The book is a modern introduction to abstract algebra, and it is suitable for self-study.
+\end{abstract}
+
+\newpage
+
+\tableofcontents
+
+% \newcommand{\Hom}{\operatorname{Hom}}
+% \newcommand{\Obj}{\operatorname{Obj}}
+% \newcommand{\End}{\operatorname{End}}
+% \newcommand{\Set}{\mathsf{Set}}
+
+\input{chapters/ch1.tex}
+
+\newpage
+%─────Appendix────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+\appendix
+\appendixpage
+
+\input{appendix.tex}
+
+\newpage
+%─────Reference──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+\printbibliography
+
+\end{document}
