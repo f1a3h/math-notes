@@ -1,0 +1,94 @@
+\chapter{Groups, first encounter}
+
+前面学习了 category 的概念，现在我们学习一种特殊的 category，叫做 group（称为 \(\Grp\)）.
+
+\section{Definition of group}\label{sec:2.1}
+
+\subsection{Groups and groupoids}\label{sec:2.1.1}
+
+\begin{quote}[Joke]
+    \emph{Definition}: A group \emph{is a groupoid with a single object}.
+\end{quote}
+
+这个定义很好的体现了 groups 的 properties，在 groupoid \(\mathsf{G}\) 中，所有 morphisms 都是 isomorphism，当 object 只有一个（记为 \(*\)）时，那么这些 morphisms 都是 automorphism，即
+
+\[\Hom_{\sf{G}}(*, *) = \Aut_{\sf{G}}(*)\]
+
+将 set \(\Hom_{\sf{G}}(*, *)\) 记作 \(G\)，可以发现 \(G\) 对 composition 是封闭的、每个 morphism 都有 inverse、有单位元 \(1_{*}\)，事实上，\(G\) 加上 composition law 才是一个 group，前面的定义错在将 group 当成了一个 groupoid with a single object.
+
+\subsection{Definition}\label{sec:2.1.2}
+
+在正式的定义中，将上述 composition law 记作 \(\bullet\)，称为 `mulplication'，notation 形如：
+
+\[\bullet \colon G \times G \to G\]
+
+或
+
+\[\bullet(g, h) \eqqcolon g \bullet h\]
+
+\begin{definition}[Group]\label{def:group}
+    Let \(G\) be a nonempty set, endowed with the binary operation \(\bullet\) (briefly, \((G, \bullet)\) or simply \(G\)), is a \emph{group} if
+    \begin{enumerate}
+        \item the operation \(\bullet\) is \emph{associative};
+        \item there exists an \emph{identity element} \(e_{G}\) for \(\bullet\);
+        \item every element in \(G\) has an \emph{inverse} with respect to \(\bullet\).
+    \end{enumerate}
+\end{definition}
+
+最简单的 group 显然是只包含 \(e_{G}\) 一个元素的 group，称为 \emph{trivial group}.
+
+\begin{eg}\label{eg:2.1.5}
+    可逆的 \(n \times n\) matrices with real entries 的集合与矩阵乘法运算可以构成一个 group，表示为 \(\GL_{n}(\mathbb{R})\).
+\end{eg}
+
+\subsection{Basic properties}\label{sec:2.1.3}
+
+从前面 groupoid 的角度来看，\(G\) 中的 \(e_G\) 显然对应的是 \(1_{*}\)，但是正式的定义里并没有说明这一点，甚至没有要求 \(e_G\) 是 unique 的，实际上，\(G\) 的元素中除了 \(1_{*}\) 没有其他的元素能 work as an identity.
+
+\begin{proposition}\label{prop:2.1.6}
+    If \(h \in G\) is an identity of \(G\), then \(h = e_G\).
+\end{proposition}
+\begin{explanation}
+    直接使用 identity element 的定义导出矛盾。假设 \(h\) 是一个 identity 且 \(h \not= e_G\)，那么有
+    \[h = e_{G} h = e_{G}\]
+\end{explanation}
+
+\begin{proposition}\label{prop:2.1.7}
+    The inverse is also unique.
+\end{proposition}
+\begin{explanation}
+    由于 \(G\) 中的每个元素都是 isomorphism，因此根据 \autoref{prop:1.4.2} 这个引理显然是成立的。
+\end{explanation}
+
+\autoref{prop:2.1.7} 启示我们可以将元素 \(g\) 的 inverse 记作 \(g^{-1}\)，进一步地，我们将一个元素对自身做 \(n\) 次的 multiplication 记作 \(g^n\)，它的 inverse 记作 \(g^{-n}\)，于是我们可以很自然地定义 \(g^0 = e_G\).
+
+\subsection{Cancellation}\label{sec:2.1.4}
+
+`cancellation' 在 group 中同样存在，由于 isomorphism 既是 monomorphism 又是 epimorphism，因此 \(G\) 中的每个元素都是左右可消的。
+
+\begin{note}
+    反过来不成立，如果一个 morphism 即是 monomorphism 又是 epimorphism，那么它也不一定是 isomorphism，由偏序关系 \(<\) 导出的 category 就是一个反例。
+\end{note}
+
+\begin{proposition}\label{prop:2.1.8}
+    Let \(G\) be a group. Then \(\forall a, g, h \in G\)
+    \[ga = ha \implies g = h, \quad ag = ah \implies g = h.\]
+\end{proposition}
+\begin{explanation}
+    因为 group 中每个元素都有 inverse，因此等式两边同时乘上 \(a^{-1}\) 即可得证。
+\end{explanation}
+
+\subsection{Commutative groups}\label{sec:2.1.5}
+
+我们称对 \(\bullet\) 满足 commutative law 的 group 为 commutative group 或 \emph{abelian group}.
+
+abelian groups 有一个很重要的性质，那就是它的结构是 `\(\mathbb{Z}\)-module structure'，这种性质在当 abelian groups 与其他 operations 同时存在的当情况下很有用。
+
+换句话说，abelian groups 和 \(\mathbb{Z}\)-module 是同构的，那么我们可以直接将它作为 \(\mathbb{Z}\)-module 来处理。
+
+注意到 \(\mathbb{Z}\)-module 中的 \(\bullet\) 对应的是 \(+\)，因此 abelian groups \(A\) 中的 \(\bullet\) 可以用 \(+\) 来表示，\(0_A\) 即是 \emph{identity}，\(a \in A\) 的 inverse 则是 \(-a\)，前面使用的 `power' notation 则成为了 `multiple': \(0a = 0\)，对于正整数 \(n\)，有
+\[na = \underbrace{a + \cdots + a}_{n \text{ times}}, \quad (-n)a = \underbrace{(-a) + \cdots + (-a)}_{n \text{ times}}.\]
+
+\begin{remark}
+    这里的 \(na\) 只是一种 notation，并不存在 `cancellation'.
+\end{remark}
