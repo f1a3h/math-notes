@@ -1,9 +1,9 @@
 \chapter{Preliminaries: Set theory and categories}
-\section{Naive Set Theory}\label{1.1}
+\section{Naive Set Theory}\label{sec:1.1}
 
 \subsection{Sets}\label{sec:1.1.1}
 
-一个 set 由它所包含无序的、无重复的 \emph{elements} 决定。set 的一个变种是 `multiset'，它的 elements 允许重复，正确定义一个 multiset 的方式是使用 \emph{functions}。
+一个 set 由它所包含无序的、无重复的 \emph{elements} 决定。set 的一个变种是 `multiset', 它的 elements 允许重复, 正确定义一个 multiset 的方式是使用 \emph{functions}。
 
 一些有名的 sets：
 \begin{itemize}
@@ -15,7 +15,7 @@
     \item \(\mathbb{C}\)：复数集。
 \end{itemize}
 
-另外，用 \emph{singleton} 表示只有一个元素的 set。
+另外, 用 \emph{singleton} 表示只有一个元素的 set。
 
 下面是一些有用的符号（称为 \emph{quantifiers}）：
 
@@ -59,7 +59,7 @@
     of equivalence classes of elements of \(S\) with respect to \(\sim\).
 \end{definition}
 \begin{eg}\label{eg:1.1.3}
-    令 \(S = \mathbb{Z}\)，并定义关系 \(\sim \) 为
+    令 \(S = \mathbb{Z}\), 并定义关系 \(\sim \) 为
     \[
         a \sim b \iff a - b \text{ is even}.
     \]
@@ -67,31 +67,31 @@
     \[\mathbb{Z} / \sim  = \left\{[0]_{\sim }, [1]_{\sim } \right\}\]
 \end{eg}
 
-\section{Functions between sets}\label{1.2}
+\section{Functions between sets}\label{sec:1.2}
 
 \subsection{Definition}\label{sec:1.2.1}
 
-sets 之间使用 functions 进行交互，function \(f : A \to B\) 的所有信息就是 \emph{which element \(b\) of \(B\) is the image of any given element of \(a\) of \(A\)}，这些信息相当于一些二元组的集合，即：
+sets 之间使用 functions 进行交互, function \(f : A \to B\) 的所有信息就是 \emph{which element \(b\) of \(B\) is the image of any given element of \(a\) of \(A\)}, 这些信息相当于一些二元组的集合, 即：
 \[\Gamma_f := \left\{ \left(a, b\right) \in A \times B \mid b = f(a) \right\} \subseteq A \times B \]
 而集合 \(\Gamma_f\) 通常被称为 \(f\) 的 \emph{graph}。
 
-为了满足函数的定义，集合 \(\Gamma_f\) 需要满足下列约束：
+为了满足函数的定义, 集合 \(\Gamma_f\) 需要满足下列约束：
 \[\left(\forall a \in A\right)\left(\exists! b \in B\right) \quad \left(a, b\right) \in \Gamma_f\]
 
-我们声明 \(f\) 是从 \(A\) 到 \(B\) 的函数，通常记作 \(f : A \to B\)，也可以画成下图（`diagram'）的形式：
+我们声明 \(f\) 是从 \(A\) 到 \(B\) 的函数, 通常记作 \(f : A \to B\), 也可以画成下图（`diagram'）的形式：
 % https://q.uiver.app/#q=WzAsMixbMCwwLCJBIl0sWzEsMCwiQiJdLFswLDEsImYiXV0=
 \[\begin{tikzcd}
         A & B
         \arrow["f", from=1-1, to=1-2]
     \end{tikzcd}\]
-对于任意 \(a \in A\)，我们记作：
+对于任意 \(a \in A\), 我们记作：
 \[a \mapsto f(a).\]
 
-如果 \(S\) 是 \(A\) 的子集，我们可以定义 \(f(S)\) 为：
+如果 \(S\) 是 \(A\) 的子集, 我们可以定义 \(f(S)\) 为：
 \[f(S) := \left\{ b \in B \mid \left( \exists a \in A\right) b = f(a)\right\}.\]
-也就是说，\(f(S)\) 是包含所有 \(S\) 中的 elements 的像的集合。最大的这样的集合是 \(f(A)\)，也记为 \(\im f\)。
+也就是说, \(f(S)\) 是包含所有 \(S\) 中的 elements 的像的集合。最大的这样的集合是 \(f(A)\), 也记为 \(\im f\)。
 
-另外，我们用 \(f\mid_S\) 表示将 \(f\) 限制在 \(S\) 上的函数：即 function \(S \to B\) defined by
+另外, 我们用 \(f\mid_S\) 表示将 \(f\) 限制在 \(S\) 上的函数：即 function \(S \to B\) defined by
 \[\left( \forall s \in S\right): f\mid_S (s) = f(s).\]
 \begin{note}
     \(f(S) = \im(f\mid_S).\)
@@ -100,15 +100,15 @@ sets 之间使用 functions 进行交互，function \(f : A \to B\) 的所有信
 \subsection{Examples: Multisetsm, indexed sets}\label{sec:1.2.2}
 
 \begin{eg}[Multiset]
-    我们用一个 function 来定义 multiset，一种可能的方法是使用一个 function \(f : A \to \mathbb{N}^{*}\)，其中 \(A\) 是一个集合。这样，\(f(a)\) 就是 \(a\) 在 multiset 中的重复次数。
+    我们用一个 function 来定义 multiset, 一种可能的方法是使用一个 function \(f : A \to \mathbb{N}^{*}\), 其中 \(A\) 是一个集合。这样, \(f(a)\) 就是 \(a\) 在 multiset 中的重复次数。
 \end{eg}
 \begin{eg}[Indexed set]
-    同样使用 function 来得到一个 indexed set。将集合 \(I\) 看作下标，我们可以用一个 function \(f : I \to A\) 来给 \(\im(I) \subseteq A\) 中的每个元素一个序号，从而得到一个 indexed set.
+    同样使用 function 来得到一个 indexed set。将集合 \(I\) 看作下标, 我们可以用一个 function \(f : I \to A\) 来给 \(\im(I) \subseteq A\) 中的每个元素一个序号, 从而得到一个 indexed set.
 \end{eg}
 
 \subsection{Composition of functions}\label{sec:1.2.3}
 
-functions 可以被组合，即给定两个 functions \(f : A \to B\) 和 \(g : B \to C\)，我们可以定义它们的 \emph{composition} \(gf : A \to C\) 为：
+functions 可以被组合, 即给定两个 functions \(f : A \to B\) 和 \(g : B \to C\), 我们可以定义它们的 \emph{composition} \(gf : A \to C\) 为：
 \[(\forall a \in A) \quad (g \circ f)(a) := g(f(a))\]
 
 用 diagram 的形式表示为：
@@ -120,10 +120,10 @@ functions 可以被组合，即给定两个 functions \(f : A \to B\) 和 \(g : 
         \arrow["g", from=1-2, to=1-3]
     \end{tikzcd}\]
 
-我们称上图 \emph{commutes} 或是 \emph{commutative} 的，表示无论 \(A\) 从那条路径到 \(C\)，得到的结果都是一样的。
+我们称上图 \emph{commutes} 或是 \emph{commutative} 的, 表示无论 \(A\) 从那条路径到 \(C\), 得到的结果都是一样的。
 
 \begin{note}[Associativity]
-    composition 是 \emph{associative} 的，即对于任意三个 functions \(f : A \to B, g : B \to C, h : C \to D\)，有 \(h \circ (g \circ f) = (h \circ g) \circ f\). 在 diagram 中表示为：
+    composition 是 \emph{associative} 的, 即对于任意三个 functions \(f : A \to B, g : B \to C, h : C \to D\), 有 \(h \circ (g \circ f) = (h \circ g) \circ f\). 在 diagram 中表示为：
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzEsMCwiQiJdLFsyLDAsIkMiXSxbMywwLCJEIl0sWzAsMSwiZiJdLFsxLDIsImciXSxbMCwyLCJnIFxcY2lyYyBmIiwyLHsiY3VydmUiOjJ9XSxbMiwzLCJoIl0sWzEsMywiaCBcXGNpcmMgZyIsMCx7Im9mZnNldCI6LTEsImN1cnZlIjotMn1dXQ==
     \[\begin{tikzcd}
             A & B & C & D
@@ -143,20 +143,20 @@ functions 可以被组合，即给定两个 functions \(f : A \to B\) 和 \(g : 
     \item \emph{Bijection}: \(f : A \to B\) is a \emph{bijection} if it is both an injection and a surjection.
 \end{itemize}
 
-injections 通常画作 \(\hookrightarrow\)，surjections 通常画作 \(\twoheadrightarrow\).
+injections 通常画作 \(\hookrightarrow\), surjections 通常画作 \(\twoheadrightarrow\).
 
-如果 \(f\) 既是 injection 又是 surjection，我们称 \(f\) 是 \emph{bijective} 的（或称之为一个 \emph{bijection} 或 \emph{one to one correspondence} 或 \emph{isomorphism of sets}），写作 \(f : A \xrightarrow{\sim} B\) 或
+如果 \(f\) 既是 injection 又是 surjection, 我们称 \(f\) 是 \emph{bijective} 的（或称之为一个 \emph{bijection} 或 \emph{one to one correspondence} 或 \emph{isomorphism of sets}）, 写作 \(f : A \xrightarrow{\sim} B\) 或
 \[A \cong B,\]
 此时我们称 \(A\) 和 \(B\) 是 `\emph{isomorphic}' sets.
 
 \subsection{Injections, surjections, bijections: Second viewpoint}\label{sec:1.2.5}
 
-回顾前面对 \(\Gamma_f\) 的约束，我们希望定义一个函数 \(g : B \to A\)，使得 \(\forall a \in A, \exists b \in B, s.t. f(a) = b \implies g(b) = a\)，当 \(f\) 是 surjection 时，\(\Gamma_g\) 满足约束中的 \(\forall b \in B\)；当 \(f\) 是 injection 时，\(\Gamma_g\) 满足约束中的 \(\exists! a \in A\)。也就是说，当 \(f\) 是 bijection 时，存在唯一的函数 \(g\) 是 \(f\) 的逆函数。
+回顾前面对 \(\Gamma_f\) 的约束, 我们希望定义一个函数 \(g : B \to A\), 使得 \(\forall a \in A, \exists b \in B, s.t. f(a) = b \implies g(b) = a\), 当 \(f\) 是 surjection 时, \(\Gamma_g\) 满足约束中的 \(\forall b \in B\)；当 \(f\) 是 injection 时, \(\Gamma_g\) 满足约束中的 \(\exists! a \in A\)。也就是说, 当 \(f\) 是 bijection 时, 存在唯一的函数 \(g\) 是 \(f\) 的逆函数。
 
-从图形上看，\(g\) 有一个有趣的性质，即下面的图形是 commutative 的：
+从图形上看, \(g\) 有一个有趣的性质, 即下面的图形是 commutative 的：
 % https://q.uiver.app/#q=WzAsNyxbMCwwLCJBIl0sWzEsMCwiQiJdLFsyLDAsIkEiXSxbMywwLCLvvIwiXSxbNCwwLCJCIl0sWzUsMCwiQSJdLFs2LDAsIkIiXSxbMCwxLCJmIl0sWzEsMiwiZyJdLFswLDIsIlxcaWRfQSIsMix7ImN1cnZlIjoyfV0sWzQsNSwiZyJdLFs1LDYsImYiXSxbNCw2LCJcXGlkX0IiLDIseyJjdXJ2ZSI6Mn1dXQ==
 \[\begin{tikzcd}
-        A & B & A & {，} & B & A & B
+        A & B & A & {, } & B & A & B
         \arrow["f", from=1-1, to=1-2]
         \arrow["{\id_A}"', curve={height=12pt}, from=1-1, to=1-3]
         \arrow["g", from=1-2, to=1-3]
@@ -179,7 +179,7 @@ injections 通常画作 \(\hookrightarrow\)，surjections 通常画作 \(\twohea
 
 \subsection{Monomorphisms and epimorphisms}\label{sec:1.2.6}
 
-monomorphisms 和 epimorphisms 是 category theory 中的概念，可以用更图形化的视角来看待 injectivity 和 surjectivity.
+monomorphisms 和 epimorphisms 是 category theory 中的概念, 可以用更图形化的视角来看待 injectivity 和 surjectivity.
 
 A function $f: A \to B$ is called a \emph{monomorphism(monic)} if for any sets $Z$ and functions $\alpha^{\prime}, \alpha^{\prime\prime}: Z \to A$, $f \circ \alpha^{\prime} = f \alpha^{\prime\prime}$ implies $\alpha^{\prime}= \alpha^{\prime\prime}$.
 
@@ -187,12 +187,12 @@ A function $f: A \to B$ is called a \emph{monomorphism(monic)} if for any sets $
     A function is injective if and only if it is a monomorphism.
 \end{proposition}
 
-类似的，epimorphisms 则对应 surjectivity.
+类似的, epimorphisms 则对应 surjectivity.
 
 \subsection{Basic examples}\label{sec:1.2.7}
 
 \begin{eg}[Natural projections]\label{eg:1.2.4}
-    令 \(A, B\) 为非空集合，则 \emph{natural projections} \(\pi_A, \pi_B\):
+    令 \(A, B\) 为非空集合, 则 \emph{natural projections} \(\pi_A, \pi_B\):
     % https://q.uiver.app/#q=WzAsMyxbMSwwLCJBIFxcdGltZXMgQiJdLFswLDEsIkEiXSxbMiwxLCJCIl0sWzAsMSwiXFxwaV9BIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzAsMiwiXFxwaV9CIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV1d
     \[\begin{tikzcd}
             & {A \times B} \\
@@ -203,7 +203,7 @@ A function $f: A \to B$ is called a \emph{monomorphism(monic)} if for any sets $
     被定义为 \(\pi_A(a, b) := a, \pi_B(a, b) := b, \forall (a, b)\in A\times B\)。这两个映射都是 surjections.
 \end{eg}
 \begin{eg}[Natural injections]\label{eg:1.2.5}
-    类似的，有 natural injections from \(A\) and \(B\) to the disjoint union \(A \coprod B\):
+    类似的, 有 natural injections from \(A\) and \(B\) to the disjoint union \(A \coprod B\):
     % https://q.uiver.app/#q=WzAsMyxbMCwwLCJBIl0sWzIsMCwiQiJdLFsxLDEsIkEgXFxzcWN1cCBCIl0sWzAsMiwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMSwyLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6ImJvdHRvbSJ9fX1dXQ==
     \[\begin{tikzcd}
             A && B \\
@@ -211,10 +211,10 @@ A function $f: A \to B$ is called a \emph{monomorphism(monic)} if for any sets $
             \arrow[hook, from=1-1, to=2-2]
             \arrow[hook', from=1-3, to=2-2]
         \end{tikzcd}\]
-    即将 \(a \in A\) 映射到 \((a, 0) \in A \coprod B\)，将 \(b \in B\) 映射到 \((b, 1) \in A \coprod B\).
+    即将 \(a \in A\) 映射到 \((a, 0) \in A \coprod B\), 将 \(b \in B\) 映射到 \((b, 1) \in A \coprod B\).
 \end{eg}
 \begin{eg}[Canonical projection]\label{eg:1.2.6}
-    假设 \(\sim \) 是集合 \(A\) 上的等价关系，于是有（surjective）canonical projection:
+    假设 \(\sim \) 是集合 \(A\) 上的等价关系, 于是有（surjective）canonical projection:
     % https://q.uiver.app/#q=WzAsMixbMCwwLCJBIl0sWzEsMCwiQSAvIFxcc2ltIl0sWzAsMSwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV1d
     \[\begin{tikzcd}
             A & {A / \sim}
@@ -241,34 +241,34 @@ We define an equivalence relation $\sim$ on set $A$ as follows: for all $a^{\pri
     for all $a \in A$.
 \end{theorem}
 \begin{remark}
-    可以看出，任何一个函数都可以分解为一个 surjection，一个 bijection 和一个 injection 的组合，这个定理的 key insight 在于按照 \(\im f\) 将 \(A\) 拆分为等价类。
+    可以看出, 任何一个函数都可以分解为一个 surjection, 一个 bijection 和一个 injection 的组合, 这个定理的 key insight 在于按照 \(\im f\) 将 \(A\) 拆分为等价类。
 \end{remark}
 
-如果对 \(\tilde{f}\) 的定义合法，那么显然上述分解是 commutative 的。因此证明这个定理的关键在于：
+如果对 \(\tilde{f}\) 的定义合法, 那么显然上述分解是 commutative 的。因此证明这个定理的关键在于：
 \begin{itemize}
     \item \(\tilde{f}\) 确实是一个 function;
     \item \(\tilde{f}\) 确实是一个 bijection.
 \end{itemize}
 
-在上述定理中对 \(\tilde{f}\) 的定义中存在一个问题，那就是对于同一等价类中的 \(a'\) 和 \(a''\)，是否有 \(f(a') = f(a'')\)，如果是否定的话，那么 \([a]_{\sim}\) 会对应多个 image，从而 \(\tilde{f}\) 不是一个 function. 从前面对 \(\sim\) 的定义中，显然 \(f(a') = f(a'')\)，因此 \(\tilde{f}\) 是 \emph{well-defined} 的。
+在上述定理中对 \(\tilde{f}\) 的定义中存在一个问题, 那就是对于同一等价类中的 \(a'\) 和 \(a''\), 是否有 \(f(a') = f(a'')\), 如果是否定的话, 那么 \([a]_{\sim}\) 会对应多个 image, 从而 \(\tilde{f}\) 不是一个 function. 从前面对 \(\sim\) 的定义中, 显然 \(f(a') = f(a'')\), 因此 \(\tilde{f}\) 是 \emph{well-defined} 的。
 
-而对于 bijection，我们只需证明 \(\tilde{f}\) 既是 injection 又是 surjection 即可，这里不再赘述。
+而对于 bijection, 我们只需证明 \(\tilde{f}\) 既是 injection 又是 surjection 即可, 这里不再赘述。
 
 \subsection{Clarification}\label{sec:1.2.9}
 
-通过 disjoint unions, products 或 quotients 得到的集合，它们的主要性质并不是指它们包含了什么 elements，而是它们与其他集合之间的关系。这在之后的 Universal properties section 中会有所体现。
+通过 disjoint unions, products 或 quotients 得到的集合, 它们的主要性质并不是指它们包含了什么 elements, 而是它们与其他集合之间的关系。这在之后的 Universal properties section 中会有所体现。
 
-\section{Categories}\label{1.3}
+\section{Categories}\label{sec:1.3}
 
-categories 的语言被 Norman Steenrod 称为 \emph{abstract nonsense}，因为 categories 的主要研究重点是 `structure' 而非 `meaning'，这强调了你应该把注意力放在 how that set may sit in relationship with all other sets 而不是 how you run into a specific set.
+categories 的语言被 Norman Steenrod 称为 \emph{abstract nonsense}, 因为 categories 的主要研究重点是 `structure' 而非 `meaning', 这强调了你应该把注意力放在 how that set may sit in relationship with all other sets 而不是 how you run into a specific set.
 
 \subsection{Definition}\label{sec:1.3.1}
 
-一个 category 由一些满足特定条件的 `objects' 和 `morphisms' 组成（collection）。注意这里使用的是 `collection' 而不是 `set'，这是因为根据 Russell's paradox，我们应该避免讨论 `set of all sets'，而 category 的 objects 是一个比 set 更广泛的概念，它允许 `collection of all sets'.
+一个 category 由一些满足特定条件的 `objects' 和 `morphisms' 组成（collection）。注意这里使用的是 `collection' 而不是 `set', 这是因为根据 Russell's paradox, 我们应该避免讨论 `set of all sets', 而 category 的 objects 是一个比 set 更广泛的概念, 它允许 `collection of all sets'.
 
-用 technical name 来描述上述 collection 则是 \emph{class}，即 `class of sets'，这是一个比 set 更大的概念。另一种描述是用 \emph{universe} 来定义一个足够大的 set，然后默认所有的 categories 的所有 objects 都取自这个 universe.
+用 technical name 来描述上述 collection 则是 \emph{class}, 即 `class of sets', 这是一个比 set 更大的概念。另一种描述是用 \emph{universe} 来定义一个足够大的 set, 然后默认所有的 categories 的所有 objects 都取自这个 universe.
 
-在后面的一些 examples 中，我们会看到一些 category 的 objects 是 sets，这种 category 我们称它是 \emph{small} 的。
+在后面的一些 examples 中, 我们会看到一些 category 的 objects 是 sets, 这种 category 我们称它是 \emph{small} 的。
 
 \begin{definition}[Category]\label{def:category}
     A \emph{category} $\Cat$ consists of
@@ -295,9 +295,9 @@ One further requirment is that the sets
 be \emph{disjoint} unless \(A = C, B = D\).
 
 \begin{note}
-    值得注意的是，上述定义中 90\% 描述的是 morphisms 的性质，这与上面提到的 ``categories 的研究重点是 `structure' '' 的观点不谋而合，因为 morphisms 才是描述 `structure' 的关键。
+    值得注意的是, 上述定义中 90\% 描述的是 morphisms 的性质, 这与上面提到的 ``categories 的研究重点是 `structure' '' 的观点不谋而合, 因为 morphisms 才是描述 `structure' 的关键。
 
-    但是，我们也会不可避免地从 objects 的角度来看待 categories，因为 morphisms 最终还是由 objects 决定的。
+    但是, 我们也会不可避免地从 objects 的角度来看待 categories, 因为 morphisms 最终还是由 objects 决定的。
 \end{note}
 
 \begin{definition}[Endomorphism]\label{def:endomorphism}
@@ -317,44 +317,355 @@ be \emph{disjoint} unless \(A = C, B = D\).
     \end{itemize}
 
     \begin{note}
-        尽管 \cref{sec:1.1.3,sec:1.1.4} 中提到了 sets 的 operations 体现了其他 categories 不一定有的 \(\Set\) 的一些有意思的 features，但是它们与 \(\Set\) 的定义无关。
+        尽管 \cref{sec:1.1.3,sec:1.1.4} 中提到了 sets 的 operations 体现了其他 categories 不一定有的 \(\Set\) 的一些有意思的 features, 但是它们与 \(\Set\) 的定义无关。
     \end{note}
 \end{eg}
 
-\begin{eg}[Relation]\label{eg:1.3.3}
-    Suppose \(S\) is a set and \(\sim\) is a relation on \(S\) satisfying the reflextive and transitive properties.
+\begin{eg}[Slice category]\label{eg:1.3.5}
+    设 \(\Cat\) 是一个 category, \(A\) 为 \(\Cat\) 中的一个 object, 我们现在由 \(A\) 构造一个 category \(\Cat_A\):
     \begin{itemize}
-        \item \emph{objects}: the elements of \(S\);
-        \item \emph{morphisms}: \(
-              \Hom(A, b) = \begin{cases} \text{the set consisting of }(a, b) \in S, & \text{if } a \sim b \\ \emptyset, & \text{otherwise.} \end{cases}
-              \)
+        \item \(\Obj(\Cat_A) = \text{all morphisms from any object of } \Cat \text{ to } A\);
+        \item 对于 objects \(f_1 \in \Hom_{\Cat}(Z_1, A), f_2 \in \Hom_{\Cat}(Z_2, A)\), 定义 \(\Hom_{\Cat_A}(f_1, f_2) = \Hom_{\Cat}(Z_1, Z_2)\), 即
+              % https://q.uiver.app/#q=WzAsMyxbMSwxLCJBIl0sWzAsMCwiWl8xIl0sWzIsMCwiWl8yIl0sWzEsMiwiXFxzaWdtYSJdLFsxLDAsImZfMSIsMl0sWzIsMCwiZl8yIl1d
+              \[\begin{tikzcd}
+                      {Z_1} && {Z_2} \\
+                      & A
+                      \arrow["\sigma", from=1-1, to=1-3]
+                      \arrow["{f_1}"', from=1-1, to=2-2]
+                      \arrow["{f_2}", from=1-3, to=2-2]
+                  \end{tikzcd}\]
     \end{itemize}
-    \begin{eg}[Discrete]
-        最简单的一个特例是由等价关系（`='）形成的 category，此时唯一的 morphisms 是 identity morphisms. 这些 categories 被称为是 \emph{discrete} 的。
-    \end{eg}
+    \begin{definition}[Slice category]\label{def:slice_category}
+        使用这种方式构造的 category 被称为 \emph{slice category}, 它们是 \emph{comma categories} 的特例。
+    \end{definition}
 \end{eg}
 
-\begin{eg}\label{eg:1.3.4}
-    假设 \(S\) 是一个集合。定义一个 category \(\hat{S}\)，其中：
+\begin{eg}[Coslice category]\label{eg:1.3.7}
+    将 \ref{eg:1.3.5}[Eg3.5] 中 objects 的箭头反过来, 类似的方法得到它的 morphisms, 这种 category 被称为 \emph{coslice category}.
+    % https://q.uiver.app/#q=WzAsMyxbMSwxLCJBIl0sWzAsMCwiWl8xIl0sWzIsMCwiWl8yIl0sWzEsMCwiZl8xIiwyXSxbMiwwLCJmXzIiXSxbMSwyLCJcXHNpZ21hIl1d
+    \[\begin{tikzcd}
+            {Z_1} && {Z_2} \\
+            & A
+            \arrow["\sigma", from=1-1, to=1-3]
+            \arrow["{f_1}"', from=1-1, to=2-2]
+            \arrow["{f_2}", from=1-3, to=2-2]
+        \end{tikzcd}\]
+\end{eg}
+
+\begin{eg}\label{eg:1.3.9}
+    在 \ref{eg:1.3.5}[Eg3.5] 中, 我们固定了 \(\Cat\) 中的一个 object \(A\), 现在我们固定两个 objects \(A, B\) 来构建 category \(\Cat_{A, B}\):
     \begin{itemize}
-        \item \(\Obj(\hat{S}) = \mathscr{P}(S)\)
-        \item 对 \(\hat{S}\) 中的 objects \(A, B\)（即 \(A \subseteq S, B \subseteq S\)），有
+        \item \(\Obj(\Cat_{A, B}) = \) diagrams
+              % https://q.uiver.app/#q=WzAsMyxbMCwxLCJaIl0sWzEsMCwiQSJdLFsxLDIsIkIiXSxbMCwxLCJmIl0sWzAsMiwiZyIsMl1d
+              \[\begin{tikzcd}
+                      & A \\
+                      Z \\
+                      & B
+                      \arrow["f", from=2-1, to=1-2]
+                      \arrow["g"', from=2-1, to=3-2]
+                  \end{tikzcd}\]
+              in \(\Cat\)
+        \item morphisms 是 \emph{commutative} diagrams
+              % https://q.uiver.app/#q=WzAsNCxbMCwxLCJaXzEiXSxbMSwxLCJaXzIiXSxbMiwwLCJBIl0sWzIsMiwiQiJdLFsxLDIsImZfMiJdLFsxLDMsImdfMiIsMl0sWzAsMSwiXFxzaWdtYSJdLFswLDIsImZfMSIsMCx7ImN1cnZlIjotMX1dLFswLDMsImdfMSIsMix7ImN1cnZlIjoyfV1d
+              \[\begin{tikzcd}
+                      && A \\
+                      {Z_1} & {Z_2} \\
+                      && B
+                      \arrow["{f_1}", curve={height=-6pt}, from=2-1, to=1-3]
+                      \arrow["\sigma", from=2-1, to=2-2]
+                      \arrow["{g_1}"', curve={height=12pt}, from=2-1, to=3-3]
+                      \arrow["{f_2}", from=2-2, to=1-3]
+                      \arrow["{g_2}"', from=2-2, to=3-3]
+                  \end{tikzcd}\]
+    \end{itemize}
+    \begin{note}
+        类似的, 我们也有 coslice 版 \(\Cat^{A, B}\):
+        % https://q.uiver.app/#q=WzAsNCxbMCwxLCJaXzEiXSxbMSwxLCJaXzIiXSxbMiwwLCJBIl0sWzIsMiwiQiJdLFsyLDEsImZfMiIsMl0sWzMsMSwiZ18yIl0sWzEsMCwiXFxzaWdtYSIsMl0sWzIsMCwiZl8xIiwyLHsiY3VydmUiOjF9XSxbMywwLCJnXzEiLDAseyJjdXJ2ZSI6LTJ9XV0=
+        \[\begin{tikzcd}
+                && A \\
+                {Z_1} & {Z_2} \\
+                && B
+                \arrow["{f_1}"', curve={height=6pt}, from=1-3, to=2-1]
+                \arrow["{f_2}"', from=1-3, to=2-2]
+                \arrow["\sigma"', from=2-2, to=2-1]
+                \arrow["{g_1}", curve={height=-12pt}, from=3-3, to=2-1]
+                \arrow["{g_2}", from=3-3, to=2-2]
+            \end{tikzcd}\]
+    \end{note}
+\end{eg}
+
+\begin{eg}\label{eg:1.3.10}
+    作为 \(\Cat_{A, B}\) 的变种, 我们也可以考虑固定两个 \(\Cat\) 中的 morphisms \(\alpha \in \Hom_{\Cat}(A, C), \beta \in \Hom_{\Cat}(B, C)\) 得到一个 \emph{fibered} version of \(\Cat_{A, B}\):
+    \begin{itemize}
+        \item \(\Obj(\Cat_{\alpha, \beta}) = \) \emph{commutative diagrams}
+              % https://q.uiver.app/#q=WzAsNCxbMCwxLCJaIl0sWzEsMCwiQSJdLFsxLDIsIkIiXSxbMiwxLCJDIl0sWzEsMywiXFxhbHBoYSJdLFsyLDMsIlxcYmV0YSIsMl0sWzAsMSwiZiJdLFswLDIsImciLDJdXQ==
+              \[\begin{tikzcd}
+                      & A \\
+                      Z && C \\
+                      & B
+                      \arrow["\alpha", from=1-2, to=2-3]
+                      \arrow["f", from=2-1, to=1-2]
+                      \arrow["g"', from=2-1, to=3-2]
+                      \arrow["\beta"', from=3-2, to=2-3]
+                  \end{tikzcd}\] in \(\Cat\)
+        \item  morphism 是响应的 \emph{commutative diagrams}
+              % https://q.uiver.app/#q=WzAsNSxbMSwxLCJaXzEiXSxbMiwwLCJBIl0sWzIsMiwiQiJdLFszLDEsIkMiXSxbMCwxLCJaXzIiXSxbMSwzLCJcXGFscGhhIl0sWzIsMywiXFxiZXRhIiwyXSxbMCwxLCJmXzEiXSxbMCwyLCJnXzEiLDJdLFs0LDEsImZfMiIsMCx7ImN1cnZlIjotMX1dLFs0LDIsImdfMiIsMix7ImN1cnZlIjoyfV0sWzQsMCwiXFxzaWdtYSJdXQ==
+              \[\begin{tikzcd}
+                      && A \\
+                      {Z_2} & {Z_1} && C \\
+                      && B
+                      \arrow["\alpha", from=1-3, to=2-4]
+                      \arrow["{f_2}", curve={height=-6pt}, from=2-1, to=1-3]
+                      \arrow["\sigma", from=2-1, to=2-2]
+                      \arrow["{g_2}"', curve={height=12pt}, from=2-1, to=3-3]
+                      \arrow["{f_1}", from=2-2, to=1-3]
+                      \arrow["{g_1}"', from=2-2, to=3-3]
+                      \arrow["\beta"', from=3-3, to=2-4]
+                  \end{tikzcd}\]
+    \end{itemize}
+    \begin{note}
+        对应的 coslice category 为 \(\Cat^{\alpha, \beta}\):
+        % https://q.uiver.app/#q=WzAsNSxbMSwxLCJaXzEiXSxbMiwwLCJBIl0sWzIsMiwiQiJdLFszLDEsIkMiXSxbMCwxLCJaXzIiXSxbMywxLCJcXGFscGhhIiwyXSxbMywyLCJcXGJldGEiXSxbMSwwLCJmXzEiLDJdLFsyLDAsImdfMSJdLFsxLDQsImZfMiIsMix7ImN1cnZlIjoxfV0sWzIsNCwiZ18yIiwwLHsiY3VydmUiOi0yfV0sWzAsNCwiXFxzaWdtYSIsMl1d
+        \[\begin{tikzcd}
+                && A \\
+                {Z_2} & {Z_1} && C \\
+                && B
+                \arrow["{f_2}"', curve={height=6pt}, from=1-3, to=2-1]
+                \arrow["{f_1}"', from=1-3, to=2-2]
+                \arrow["\sigma"', from=2-2, to=2-1]
+                \arrow["\alpha"', from=2-4, to=1-3]
+                \arrow["\beta", from=2-4, to=3-3]
+                \arrow["{g_2}", curve={height=-12pt}, from=3-3, to=2-1]
+                \arrow["{g_1}", from=3-3, to=2-2]
+            \end{tikzcd}\]
+    \end{note}
+\end{eg}
+
+\begin{exercise}[3.9]
+    \begin{itemize}
+        \item \(\Obj(\sf{MSet})=\) 二元组 \((S, \sim )\), 其中 \(S\) 为集合, \(\sim \) 为等价关系.
+        \item \(\Hom_{\sf{MSet}}((S, \sim ), (T, \approx)) = \) 从 \(S\) 到 \(T\) 的所有 functions \(f\), 使得 \(f\) 保持等价关系, 即
               \[
-                  \Hom_{\hat{S}}(A, B) = \begin{cases} (A, B), & \text{if } A \subseteq b \\ \emptyset, & \text{otherwise.} \end{cases}
+                  \forall s_1, s_2 \in S, s_1 \sim s_2 \implies f(s_1) \approx f(s_2).
               \]
     \end{itemize}
+\end{exercise}
+\begin{explanation}
+    下面证明上述定义的 \(\sf{MSet}\) 是一个 category:
+    \begin{itemize}
+        \item 由于 functions 满足 associativity 与 composition law, 显然 \(\sf{MSet}\) 中的 morphisms 也满足 associativity 和 composition law.
+        \item 对于任意 \((S, \sim )\), 存在一个 identity morphism \(\id_{(S, \sim )}\) 使得 \(\forall s \in S, \id_{(S, \sim )}(s) = s\).
+        \item \(\id_{(S, \sim )}\) 显然也是 composition law 的 identity.
+    \end{itemize}
+\end{explanation}
 
-    \begin{remark}
-        用这种方式构成的样例在类似 algebraic geometry 这样的成熟的领域中十分重要。
-    \end{remark}
-\end{eg}
+\begin{exercise}[3.10]
+    想要从 object \(A\) 中取出某个 subobject, 题干告诉我们这个过程是通过 morphisms \(A \to \Omega\) 来实现的, 容易想到特定的 subobject 由特定的 morphisms 指定, 那么 \(\Omega\) 的内容应该要能够指出哪些内容属于这个 subobject, 哪些不属于。
 
-\section{Morphisms}
+    在 \(\Set\) 中, \(\Omega\) 应该是一个集合, 简单起见, 我们可以直接令其为 \(\{0,1\}\), 其中 0 表示不属于 subobject, 1 表示属于 subobject.
+\end{exercise}
 
-\subsection{Isomorphism}
+\section{Morphisms}\label{sec:1.4}
+
+在 \(\Set\) 中, 它的 morphisms 就是前面提到的 functions, 但是 morphisms 与 functions 有很大不同, morphisms 是一个更宽泛的概念, functions 的定义是 elementwise 的, 而 categoy 中的 objects 并不一定有 elements.
+
+\subsection{Isomorphism}\label{sec:1.4.1}
+
 \begin{definition}[Isomorphism]\label{def:isomorphism}
     A morphism \(f \in \Hom_{\Cat}(A, B)\) is an \emph{isomorphism} if it has a (two-sided) inverse under composition: if \(\exists g \in \Hom_{\Cat}(B, A)\) such that
     \[
         gf = 1_A, \quad fg = 1_B.
     \]
 \end{definition}
+
+由于 function 的定义是 elementwise 的, 所以一个 function 的 `inverse' 从定义上看天然是 unique 的, 而 isomorphism 的 `inverse' 则不然, 但它确实也是 unique 的, 只是需要一个额外的验证。
+
+\begin{proposition}\label{prop:1.4.2}
+    The inverse of an isomorphism is unique.
+\end{proposition}
+\begin{proof}
+    若 \(g, h \in \Hom_{\Cat}(B, A)\) 都满足上式且 \(g \not= h\), 于是我们有
+    \[g = g 1_{B} = g(fh) = (gf)h = 1_{A} h = h\]
+    与假设矛盾。
+\end{proof}
+
+\begin{proposition}\label{prop:1.4.3}
+    With notation as above:
+    \begin{itemize}
+        \item (reflective) Each identity \(1_A\) is an isomorphism and is its own inverse.
+        \item (symmetric) If \(f\) is an isomorphism, then so is its inverse \(f^{-1}\) and further \((f^{-1})^{-1} = f\).
+        \item (transitive) If \(f\in \Hom_{\Cat}(A, B), g \in \Hom_{\Cat}(B, A)\) are isomorphisms, then so is \(gf\) and \((gf)^{-1} = f^{-1}g^{-1}\).
+    \end{itemize}
+\end{proposition}
+\begin{note}
+    一个 category 中的两个 objects \(A, B\) 如果满足存在一个 isomorphism \(f \in \Hom_{\Cat}(A, B)\), 那么我们称 \(A\) 和 \(B\) 是 \emph{isomorphic}, 记作 \(A \cong B\).
+\end{note}
+
+\begin{eg}[Groupoid]\label{eg:1.4.6}
+    如果一个 category 中所有的 morphisms 都是 isomorphism, 那么这个 category 被称为 \emph{groupoid}.
+\end{eg}
+
+一个 \emph{automorphism} 指的是 category \(\Cat\) 中的 object \(A\) 中所有在 \(\Hom_{\Cat}(A, A)\) 中的 isomorphisms 的集合, 记作 \(\Aut_{\Cat}(A)\), 它是 \(\End_{\Cat}(A)\) 的子集. 不难发现 \(\Aut_{\Cat}(A)\) 是一个 group.
+
+\subsection{Monomorphisms and epimorphisms}\label{sec:1.4.2}
+
+在 morphism 中类比于 injectivity 和 surjectivity 的概念分别是 \emph{monomorphism} 和 \emph{epimorphism}.
+
+\begin{definition}[Monomorphism]\label{def:monomorphism}
+    Let \(\Cat\) be a category. A morphism \(f \in \Hom_{\Cat}(A, B)\) is a \emph{monomorphism} if the following holds:
+    \[
+        \forall Z \in \Obj(\Cat), \forall g_1, g_2 \in \Hom_{\Cat}(Z, A), f \circ g_1 = f \circ g_2 \implies g_1 = g_2.
+    \]
+\end{definition}
+
+\begin{definition}[Epimorphism]\label{def:epimorphism}
+    Let \(\Cat\) be a category. A morphism \(f \in \Hom_{\Cat}(A, B)\) is an \emph{epimorphism} if the following holds:
+    \[
+        \forall Z \in \Obj(\Cat), \forall g_1, g_2 \in \Hom_{\Cat}(B, Z), g_1 \circ f = g_2 \circ f \implies g_1 = g_2.
+    \]
+\end{definition}
+
+在 \(\Set\) 中，monomorphism 完全等价于 injectivity, epimorphism 完全等价于 surjectivity. 但是在由 \(\mathbb{Z}\) 上的关系 \(\le\) 定义得到的 category 中, 每个 morphism 都同时是 monomorphism 和 epimorphism, 但是唯一的 isomorphisms 只有 identies.
+
+因此上述特性只是因为 \(\Set\) 是一个特殊的 category 而已, 更广泛来说, 上面这种特性会出现在所有 \emph{abelian category} 中.
+
+\section{Universal properties}\label{sec:1.5}
+
+从 \autoref{sec:1.3} 中的 examples 可以看出, 一个 category 可以通过一些操作来构造 (construction) 得到一些新的 categories, 而我们现在要研究的就是这些 constructions 之间的 \emph{universal properties}.
+
+\subsection{Initial and final objects}\label{sec:1.5.1}
+
+\begin{definition}[Initial and final objects]\label{def:initial_final_objects}
+    Let \(\Cat\) be a category. We say that an object \(I\) of \(\Cat\) is \emph{initial} if for every object \(A\) of \(\Cat\), there exists a \emph{unique} morphism \(I \to A\) in \(\Cat\):
+    \[
+        \forall A \in \Obj(\Cat): \quad \Hom_{\Cat}(I, A) \text{ is a singleton.}
+    \]
+    We say that an object \(T\) of \(\Cat\) is \emph{final} if for every object \(A\) of \(\Cat\), there exists a \emph{unique} morphism \(A \to F\) in \(\Cat\):
+    \[
+        \forall A \in \Obj(\Cat): \quad \Hom_{\Cat}(A, F) \text{ is a singleton.}
+    \]
+
+    \begin{note}
+        一个 category 不一定要有 initial 或者 final objects, 如果有的话, 它们不一定是 unique 的.
+    \end{note}
+\end{definition}
+
+\begin{eg}[Set]\label{eg:1.5.3}
+    在 \(\Set\) 中, 它的 initial object 是空集 \(\emptyset\), final objects 是任何 singleton.
+\end{eg}
+
+尽管 initial/final objects 不一定是 unique 的, 但是只要它们存在, 它们就一定是 isomorphic 的.
+
+\begin{proposition}\label{prop:1.5.4}
+    Let \(\Cat\) be a category.
+    \begin{itemize}
+        \item If \(I_1, I_2\) are both initial objects of \(\Cat\), then \(I_1 \cong I_2\).
+        \item If \(F_1, F_2\) are both final objects of \(\Cat\), then \(F_1 \cong F_2\).
+    \end{itemize}
+    Further, these isomorphisms are unique determined.
+\end{proposition}
+\begin{proof}
+    由 initial/final object 的定义, 任意两个 initial/final objects 之间各只会有一个 morphism, 因此这个 morphism 一定是 isomorphism.
+\end{proof}
+
+\subsection{Universal properties}\label{sec:1.5.2}
+
+当某种 construction 可以看作某个 category 的 terminal object 时, 我们称它满足了某个 universal property. 换句话说, 一个 object 需要满足了某个 universal property 才能成为 terminal object.
+
+一个简单的例子是我们称 \emph{\(\emptyset\) is universal with respect to the property of mapping to sets}, 这句话和 ``\(\emptyset\) is the initial object in \(\Set\)'' 是等价的.
+
+在更多的时候 initial/final objects 对应的 properties 会更复杂, 对于一个 universal property 的 `explanation' 可能会遵循以下模式: ``object \(X\) is universal with respect to the following property: for any \(Y\) such that\dots, there exists a unique morphism \(Y \to X\) such that\dots''.
+
+\subsection{Quotients}\label{sec:1.5.3}
+
+设 \(\sim \) 是定义在集合 \(A\) 上的一个等价关系, 我们有:
+
+\emph{``The quotient \(A/\sim \) is universal with respect to the property of mapping \(A\) to a set in such a way that equivalent elements have the same image.''}
+
+\subsection{Products}\label{sec:1.5.4}
+
+假设 \(A, B\) 是两个集合, 考虑它们的 product \(A \times B\) 以及两个 natural projections:
+
+% https://q.uiver.app/#q=WzAsMyxbMCwxLCJBIFxcdGltZXMgQiJdLFsxLDAsIkEiXSxbMSwyLCJCIl0sWzAsMSwiXFxwaV9BIl0sWzAsMiwiXFxwaV9CIiwyXV0=
+\[\begin{tikzcd}
+        & A \\
+        {A \times B} \\
+        & B
+        \arrow["{\pi_A}", from=2-1, to=1-2]
+        \arrow["{\pi_B}"', from=2-1, to=3-2]
+    \end{tikzcd}\]
+
+我们有, 对任意集合 \(Z\) 和 morphisms
+
+% https://q.uiver.app/#q=WzAsMyxbMCwxLCJaIl0sWzEsMCwiQSJdLFsxLDIsIkIiXSxbMCwxLCJmX0EiXSxbMCwyLCJmX0IiLDJdXQ==
+\[\begin{tikzcd}
+        & A \\
+        Z \\
+        & B
+        \arrow["{f_A}", from=2-1, to=1-2]
+        \arrow["{f_B}"', from=2-1, to=3-2]
+    \end{tikzcd}\]
+
+存在一个 unique morphism \(\sigma \colon Z \to A \times B\) 使得 diagrams
+
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCJaIl0sWzEsMSwiQSBcXHRpbWVzIEIiXSxbMiwwLCJBIl0sWzIsMiwiQiJdLFsxLDIsIlxccGlfQSJdLFsxLDMsIlxccGlfQiIsMl0sWzAsMSwiXFxzaWdtYSJdLFswLDIsImZfQSIsMCx7ImN1cnZlIjotMn1dLFswLDMsImZfQiIsMix7ImN1cnZlIjoyfV1d
+\[\begin{tikzcd}
+        && A \\
+        Z & {A \times B} \\
+        && B
+        \arrow["{f_A}", curve={height=-12pt}, from=2-1, to=1-3]
+        \arrow["\sigma", from=2-1, to=2-2]
+        \arrow["{f_B}"', curve={height=12pt}, from=2-1, to=3-3]
+        \arrow["{\pi_A}", from=2-2, to=1-3]
+        \arrow["{\pi_B}"', from=2-2, to=3-3]
+    \end{tikzcd}\]
+
+commutes.
+
+此时, \(\sigma\) 通常记为 \(f_A \times f_B\).
+
+\begin{proof}
+    \(\forall z \in Z\), 令
+    \[
+        \sigma(z) = (f_A(z), f_B(z)).
+    \]
+\end{proof}
+
+不难发现, \(A \times B\) (together with the information of their natural projections to the factors) 是 \(\Cat_{A, B}\) 中的 final object.
+
+当 category \(\Cat\) 中的任意两个 objects \(A, B\) 在 \(\Cat_{A, B}\) 中都有 final objects 时, 我们称 \(\Cat\) 有 \emph{(finite) products}.
+
+通过这种视角来看待 products 的主要好处就是, universal property 可能在任意 category 中成立, 而不仅仅是在 \(\Set\) 中.
+
+\subsection{Coproducts}\label{sec:1.5.5}
+
+类似地, 给定两个 morphisms \(i_A : A \to A \coprod B, i_B : B \to A \coprod B\), 我们有 \emph{coproduct} \(A \coprod B\) 是 \(\Cat^{A, B}\) 中的 initial object, 满足下述 universal property: 对任意 object \(Z\) 和 morphisms
+
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJBIl0sWzEsMSwiWiJdLFswLDIsIkIiXSxbMCwxLCJmX0EiXSxbMiwxLCJmX0IiLDJdXQ==
+\[\begin{tikzcd}
+        A \\
+        & Z \\
+        B
+        \arrow["{f_A}", from=1-1, to=2-2]
+        \arrow["{f_B}"', from=3-1, to=2-2]
+    \end{tikzcd}\]
+
+存在一个 unique morphism \(\sigma : A \coprod B \to Z\) 使得 diagrams
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzAsMiwiQiJdLFsxLDEsIkEgXFxjb3Byb2QgQiJdLFsyLDEsIloiXSxbMCwyLCJpX0EiXSxbMSwyLCJpX0IiLDJdLFsyLDMsIlxcc2lnbWEiXSxbMCwzLCJmX0EiLDAseyJjdXJ2ZSI6LTJ9XSxbMSwzLCJmX0IiLDAseyJjdXJ2ZSI6Mn1dXQ==
+\[\begin{tikzcd}
+        A \\
+        & {A \coprod B} & Z \\
+        B
+        \arrow["{i_A}", from=1-1, to=2-2]
+        \arrow["{f_A}", curve={height=-12pt}, from=1-1, to=2-3]
+        \arrow["\sigma", from=2-2, to=2-3]
+        \arrow["{i_B}"', from=3-1, to=2-2]
+        \arrow["{f_B}", curve={height=12pt}, from=3-1, to=2-3]
+    \end{tikzcd}\]
+
+commutes.
+
+\begin{proposition}[Coproducts in \(\Set\)]\label{prop:1.5.6}
+    The disjoint union \emph{is a coproduct in \(\Set\)}.
+\end{proposition}
